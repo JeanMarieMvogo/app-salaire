@@ -2,12 +2,8 @@ node{
       stage('Clone') {
           checkout scm
       }
-      stage('Ansible') {
-        ansiblePlaybook (
-            inventory: 'hosts.yaml',
-            playbook: 'playbook.yaml',
-            colorized: true,
-        )
+      stage('SSH') {
+        sh "ansible-playbook -i inventaire playbook.yml"
       }
 }
 
