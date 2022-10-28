@@ -1,2 +1,6 @@
 ---
 # vars file for apache
+sites:
+ - app-salaire.jeanmarie.form
+ - app-salaire.client.form
+ - app-salaire.test.form
