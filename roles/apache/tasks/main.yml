@@ -29,6 +29,13 @@
   loop:
     "{{ sites }}"
 
+- name: Copier les fichiers php
+  copy:
+   src: app-php/
+   dest: /var/www/{{ item }}/html/
+  loop:
+    "{{ sites }}"
+
 - name: démarrage et activation du serveur apache
   systemd:
    name: httpd
