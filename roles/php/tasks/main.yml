@@ -1,6 +1,6 @@
 ---
 # tasks file for php
-- name: installer php
+- name: installation de php
   yum:
    name: "{{ php_packets }}"
    state: present
@@ -11,13 +11,13 @@
    regexp: '^user = apache'
    line: ' user = apache '
 
-- name: changement du group
+- name: changement du groupe
   lineinfile:
    path: /etc/php-fpm.d/www.conf
    regexp: '^group = apache'
    line: ' user = apache '
 
-- name: demarrer php-fpm
+- name: demarrage du  php-fpm
   systemd:
    name: php-fpm
    state: started

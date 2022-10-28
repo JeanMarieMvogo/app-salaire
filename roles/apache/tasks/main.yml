@@ -1,17 +1,17 @@
 ---
 # tasks file for apache
-- name: Installation apache
+- name: Installation apache 
   yum:
    name: httpd
    state: present
 
-- name: disable firewall
+- name: arret pare feu
   systemd:
    name: firewalld
    state: stopped
    enabled: no
 
-- name: Création des répertoires des sites
+- name: Création des répertoires des différents sites
   file: 
    path: /var/www/{{ item }}
    state: directory
@@ -22,14 +22,14 @@
   loop:
     "{{ sites }}"
 
-- name: Création du template de fichier de conf
+- name: Création du template 
   template:
-   src: conf.j2
+   src: configuration.j3
    dest: /etc/httpd/conf.d/{{ item }}.conf
   loop:
     "{{ sites }}"
 
-- name: Copier les fichiers php
+- name: php
   copy:
    src: app-php/
    dest: /var/www/{{ item }}/html/
@@ -41,4 +41,3 @@
    name: httpd
    state: started
    enabled: yes
-
