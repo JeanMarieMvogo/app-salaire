@@ -5,3 +5,4 @@
   roles:
    - roles/apache
    - roles/mariadb
+   - roles/php
