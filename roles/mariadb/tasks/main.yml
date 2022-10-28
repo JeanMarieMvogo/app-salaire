@@ -1,0 +1,16 @@
+---
+# tasks file for mariadb
+- name: installation Mariadb
+  yum:
+   name: "{{ item }}"
+   state: present
+  loop:
+    - mariadb
+    - python2-PyMySQL
+    - mariadb-server
+
+- name: Activation Mariadb
+  systemd:
+   name: mariadb
+   state: started
+   enabled: yes
